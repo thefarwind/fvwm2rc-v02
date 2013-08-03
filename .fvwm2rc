@@ -52,7 +52,7 @@ Mouse 3 R	A	WindowList
 ##################
 # right click menu
 DestroyMenu MenuFvwmRoot
-AddToMenu MenuFvwmRoot	"[gt.Root Menu]"	Title
+AddToMenu MenuFvwmRoot	"$[gt.Root Menu]"	Title
 +			"&1. XTerm"	Exec exec xterm
 +			""	Nop
 +			"&M. Midori"	Exec exec midori
