@@ -1,5 +1,4 @@
-########################################
-#                                      #
+########################################                                      #
 # |==] \\    // || /\ || |\    /| /===)#
 # ||    \\  //  ||//\\|| |\\  //| ~ // #
 # |==]   \\//   |//  \\| ||\\//||  //  #
@@ -9,4 +8,81 @@
 ########################################
 
 
+#########################
+#Desktop and Pager Setup#
+#########################
+
+# Setup Desktop Configuratioon
+DesktopSize 3x3
+DesktopName 0	Main
+DesktopName 1	Work
+DesktopName 2	Games
+
+# controls edge scrolling behavior
+EdgeScroll 100 100
+EdgeResistance 150 150
+EdgeThickness 1
+
+# NEED TO SETUP PAGER
+
+##########################
+#Mouse and Focus Behavior#
+##########################
+
+ColormapFocus FollowsMouse
+ClickTime 500
+MoveThreshold 3
+Style *		FocusFollowsMouse
+
+#######################
+#Window Initialization#
+#######################
+
+Style * 	TileCascadePlacement
+
+
+#############
+#Mouse Menus#
+#############
+
+Mouse 1 R	A	Menu MenuFvwmRoot Nop
+#Add middle mouse button here
+Mouse 3 R	A	WindowList
+
+##################
+# right click menu
+DestroyMenu MenuFvwmRoot
+AddToMenu MenuFvwmRoot	"[gt.Root Menu]"	Title
++			"&1. XTerm"	Exec exec xterm
++			""	Nop
++			"&M. Midori"	Exec exec midori
++			"&F. Firefox"	Exec exec firefox
++			""	Nop
++			"&G. Games"	Popup MenuFvwmGames
++			"&U. Utilities"	Popup MenuFvwmUtilities
++			"&V. Fvwm2"	Popup MenuFvwmControl
++			"&P. Power"	Popup MenuFvwmPower
+
+DestroyMenu MenuFvwmGames
+AddToMenu MenuFvwmGames		"$[gt.Games]"	Title
++			"&S. Steam"		Exec exec steam
++			"&M. Minecraft" 	Nop
++			"&F. Feed The Beast"	Nop
+
+DestroyMenu MenuFvwmUtilities
+AddToMenu MenuFvwmUtilities	"$[gt.Utilities]" Title
++			"&T. Top"	Exec exec xterm -T Top -n Top -e top
+
+DestroyMenu MenuFvwmControl
+AddToMenu MenuFvwmControl "$[gt.Fvwm2]"	Title
++			"&Q. Quit"	Quit
++			"&R. Restart"	Restart
+
+DestroyMenu MenuFvwmPower
+AddToMenu MenuFvwmPower		"$[gt.Power]"	Title
++			"&L. Log off"		Exec logoff
++			"&H. Hibernate"		Nop
++			"&R. Reboot"		Exec reboot
++			"&P. Power Off"		Exec poweroff
+################
 
