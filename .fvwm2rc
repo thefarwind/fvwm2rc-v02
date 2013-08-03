@@ -13,7 +13,7 @@
 #########################
 
 # Setup Desktop Configuratioon
-DesktopSize 3x3
+DesktopSize 3x2
 DesktopName 0	Main
 DesktopName 1	Work
 DesktopName 2	Games
@@ -39,7 +39,7 @@ Style *		FocusFollowsMouse
 #######################
 
 Style * 	TileCascadePlacement
-
+Style * 	HilightFore black, HilightBack darkorange
 
 #############
 #Mouse Menus#
