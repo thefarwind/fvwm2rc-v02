@@ -1,4 +1,4 @@
-########################################                                      #
+########################################
 # |==] \\    // || /\ || |\    /| /===)#
 # ||    \\  //  ||//\\|| |\\  //| ~ // #
 # |==]   \\//   |//  \\| ||\\//||  //  #
@@ -96,9 +96,10 @@ AddToMenu MenuFvwmControl "$[gt.Fvwm2]"	Title
 DestroyMenu MenuFvwmPower
 AddToMenu MenuFvwmPower		"$[gt.Power]"	Title
 +			"&L. Log off"		Exec logoff
++			"&S. Suspend"		Exec systemctl suspend
 +			"&H. Hibernate"		Nop
-+			"&R. Reboot"		Exec reboot
-+			"&P. Power Off"		Exec poweroff
++			"&R. Reboot"		Exec systemctl reboot
++			"&P. Power Off"		Exec systemctl poweroff
 ################
 
 
