@@ -23,7 +23,9 @@ EdgeScroll 100 100
 EdgeResistance 150 150
 EdgeThickness 1
 
-# NEED TO SETUP PAGER
+# NEED TO SET UP PAGER
+Style FvwmPager StaysOnTop
+Style FvwmPager BorderWidth 0
 
 ##########################
 #Mouse and Focus Behavior#
@@ -34,12 +36,25 @@ ClickTime 500
 MoveThreshold 3
 Style *		FocusFollowsMouse
 
+######################
+#Misc. Initialization#
+######################
+
+Style *		Font xft:FreeSerif:Medium:Regular:size=10
+Style *		IconFont xft:FreeSerif:Medium:Regular:size=10
+
 #######################
 #Window Initialization#
 #######################
 
 Style * 	TileCascadePlacement
 Style * 	HilightFore black, HilightBack darkorange
+
+#####################
+#Menu Initialization#
+#####################
+MenuStyle * fvwm, Foreground white, Background cornflowerblue, Greyed grey40
+MenuStyle * Font xft:inconsolata:Medium:Regular:size=11
 
 #############
 #Mouse Menus#
@@ -86,3 +101,7 @@ AddToMenu MenuFvwmPower		"$[gt.Power]"	Title
 +			"&P. Power Off"		Exec poweroff
 ################
 
+
+###############
+#Init Function#
+###############
