@@ -53,7 +53,7 @@ Style * 	HilightFore black, HilightBack darkorange
 #####################
 #Menu Initialization#
 #####################
-MenuStyle * fvwm, Foreground white, Background cornflowerblue, Greyed grey40
+MenuStyle * fvwm, Foreground white, Background darkolivegreen, Greyed grey40
 MenuStyle * Font xft:inconsolata:Medium:Regular:size=11
 
 #############
@@ -81,8 +81,8 @@ AddToMenu MenuFvwmRoot	"$[gt.Root Menu]"	Title
 DestroyMenu MenuFvwmGames
 AddToMenu MenuFvwmGames		"$[gt.Games]"	Title
 +			"&S. Steam"		Exec exec steam
-+			"&M. Minecraft" 	Nop
-+			"&F. Feed The Beast"	Nop
++			"&M. Minecraft" 	Exec minecraft
++			"&F. Feed The Beast"	Exec feedthebeast
 
 DestroyMenu MenuFvwmUtilities
 AddToMenu MenuFvwmUtilities	"$[gt.Utilities]" Title
@@ -95,7 +95,7 @@ AddToMenu MenuFvwmControl "$[gt.Fvwm2]"	Title
 
 DestroyMenu MenuFvwmPower
 AddToMenu MenuFvwmPower		"$[gt.Power]"	Title
-+			"&L. Log off"		Exec logoff
++			"&L. Log Off"		Quit
 +			"&S. Suspend"		Exec systemctl suspend
 +			"&H. Hibernate"		Nop
 +			"&R. Reboot"		Exec systemctl reboot
