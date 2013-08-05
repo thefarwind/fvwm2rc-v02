@@ -31,6 +31,14 @@ ColormapFocus FollowsMouse
 ClickTime 500
 MoveThreshold 3
 
+###############Color Sets###################
+#colorset 1 fg black, bg darkorange
+#colorset 2 fg white, bg darkolivegreen
+###############
+
+
+
+
 ################Styles Setup################
 
 ################
@@ -70,8 +78,27 @@ Style Fvwm*	BorderWidth 0, CirculateSkipIcon, CirculateSkip
 Style FvwmPager StaysOnTop
 Style FvwmPager BorderWidth 0
 
-*FvwmPager: Geometry 170x80-1-1
 
+DestroyModuleConfig MyButtons: *
+*MyButtons: Geometry 340x80-1-1
+*MyButtons: Back bisque3
+*MyButtons: Frame 0
+*MyButtons: Rows 1
+*MyButtons: Columns 2
+*MyButtons: (1x1, Frame 0, Swallow "FvwmIconMan" "Module FvwmIconMan")
+*MyButtons: (1x1, Frame 0, Swallow "FvwmPager" "Module FvwmPager")
+
+DestroyModuleConfig FvwmIconMan: *
+*FvwmIconMan: NumManagers 1
+*FvwmIconMan: Resolution  page
+*FvwmIconMan: Format 	  "%t"
+*FvwmIconMan: Action      Mouse	1 A sendcommand Focus, sendcommand "Iconify"
+*FvwmIconMan: FollowFocus true
+*FvwmIconMan: ButtonGeometry 80x20
+*FvwmIconMan: ManagerGeometry 2x5
+
+DestroyModuleConfig FvwmPager: *
+*FvwmPager: Geometry 170x80-1-1
 #####################
 #Program Style Setup#
 #####################
@@ -170,6 +197,5 @@ AddToFunc FuncFvwmMoveOrIconify
 ################Init Function################
 
 AddToFunc StartFunction
-+ I Module FvwmPager *
-
++ I Module FvwmButtons MyButtons
 ################
