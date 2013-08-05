@@ -32,8 +32,9 @@ ClickTime 500
 MoveThreshold 3
 
 ###############Color Sets###################
-#colorset 1 fg black, bg darkorange
-#colorset 2 fg white, bg darkolivegreen
+colorset 1 fg black, bg darkorange
+colorset 2 fg white, bg darkolivegreen
+colorset 3 fg white, bg darkslategrey
 ###############
 
 
@@ -47,7 +48,8 @@ MoveThreshold 3
 
 # General Window Styles
 Style * 	TileCascadePlacement
-Style * 	HilightFore black, HilightBack darkorange
+#Style *		Colorset 2
+Style * 	HilightColorset 1
 Style * 	MWMFunctions, MWMDecor, HintOverride
 Style *		DecorateTransient, !UsePPosition
 Style *		FocusFollowsMouse
@@ -63,7 +65,8 @@ Style *		IconFont xft:FreeSerif:Medium:Regular:size=10
 #Menu Styles#
 #############
 
-MenuStyle * fvwm, Foreground white, Background darkolivegreen, Greyed grey40
+MenuStyle * fvwm
+MenuStyle * MenuColorset 3
 MenuStyle * Font xft:inconsolata:Medium:Regular:size=11
 
 #####################
@@ -72,16 +75,15 @@ MenuStyle * Font xft:inconsolata:Medium:Regular:size=11
 
 # General Module settings
 Style Fvwm*	!Title, Sticky, WindowListSkip
-Style Fvwm*	BorderWidth 0, CirculateSkipIcon, CirculateSkip
+Style Fvwm*	BorderWidth 2, HandleWidth 0, CirculateSkipIcon, CirculateSkip
 
 # Specific Pager Styles
 Style FvwmPager StaysOnTop
-Style FvwmPager BorderWidth 0
 
 
 DestroyModuleConfig MyButtons: *
 *MyButtons: Geometry 340x80-1-1
-*MyButtons: Back bisque3
+*MyButtons: Colorset 3
 *MyButtons: Frame 0
 *MyButtons: Rows 1
 *MyButtons: Columns 2
@@ -93,7 +95,14 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Resolution  page
 *FvwmIconMan: Format 	  "%t"
 *FvwmIconMan: Action      Mouse	1 A sendcommand Focus, sendcommand "Iconify"
+#Note: I can't seem to get it to focus on the element after iconifying it
+*FvwmIconMan: Action	  Select sendcommand Focus
+*FvwmIconMan: SelectButton down
+*FvwmIconMan: FocusAndSelectButton down
+*FvwmIconMan: Sort id
 *FvwmIconMan: FollowFocus true
+#*FvwmIconMan: Colorset 3
+*FvwmIconMan: Background darkslategrey
 *FvwmIconMan: ButtonGeometry 80x20
 *FvwmIconMan: ManagerGeometry 2x5
 
