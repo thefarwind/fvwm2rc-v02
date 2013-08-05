@@ -23,6 +23,9 @@ EdgeScroll 100 100
 EdgeResistance 150 150
 EdgeThickness 1
 
+#Constrols usable area
+EwmhBaseStruts 1 -1 1 -81
+
 # Mouse General Behavior
 ColormapFocus FollowsMouse
 ClickTime 500
@@ -42,7 +45,7 @@ Style *		DecorateTransient, !UsePPosition
 Style *		FocusFollowsMouse
 
 #Setup IconBox area
-Style * 	IconBox 1 -80 -240 -1
+Style * 	IconBox 1 -80 -171 -1
 
 #Setup general fonts
 Style *		Font xft:FreeSerif:Medium:Regular:size=10
@@ -60,12 +63,14 @@ MenuStyle * Font xft:inconsolata:Medium:Regular:size=11
 #####################
 
 # General Module settings
-Style Fvwm*	NoTitle, Sticky, WindowListSkip
+Style Fvwm*	!Title, Sticky, WindowListSkip
 Style Fvwm*	BorderWidth 0, CirculateSkipIcon, CirculateSkip
 
 # Specific Pager Styles
 Style FvwmPager StaysOnTop
 Style FvwmPager BorderWidth 0
+
+*FvwmPager: Geometry 170x80-1-1
 
 #####################
 #Program Style Setup#
