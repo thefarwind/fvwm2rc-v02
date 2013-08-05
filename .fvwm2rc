@@ -8,9 +8,9 @@
 ########################################
 
 
-#########################
-#Desktop and Pager Setup#
-#########################
+###############
+#Desktop Setup#
+###############
 
 # Setup Desktop Configuratioon
 DesktopSize 3x2
@@ -23,48 +23,81 @@ EdgeScroll 100 100
 EdgeResistance 150 150
 EdgeThickness 1
 
-# NEED TO SET UP PAGER
-Style FvwmPager StaysOnTop
-Style FvwmPager BorderWidth 0
-
-##########################
-#Mouse and Focus Behavior#
-##########################
-
+# Mouse General Behavior
 ColormapFocus FollowsMouse
 ClickTime 500
 MoveThreshold 3
+
+################Styles Setup################
+
+################
+#General Styles#
+################
+
+# General Window Styles
+Style * 	TileCascadePlacement
+Style * 	HilightFore black, HilightBack darkorange
+Style * 	MWMFunctions, MWMDecor, HintOverride
+Style *		DecorateTransient, !UsePPosition
 Style *		FocusFollowsMouse
 
-######################
-#Misc. Initialization#
-######################
+#Setup IconBox area
+Style * 	IconBox 1 -80 -240 -1
 
+#Setup general fonts
 Style *		Font xft:FreeSerif:Medium:Regular:size=10
 Style *		IconFont xft:FreeSerif:Medium:Regular:size=10
 
-#######################
-#Window Initialization#
-#######################
+#############
+#Menu Styles#
+#############
 
-Style * 	TileCascadePlacement
-Style * 	HilightFore black, HilightBack darkorange
-
-#####################
-#Menu Initialization#
-#####################
 MenuStyle * fvwm, Foreground white, Background darkolivegreen, Greyed grey40
 MenuStyle * Font xft:inconsolata:Medium:Regular:size=11
 
-#############
-#Mouse Menus#
-#############
+#####################
+#Pager/Button Styles#
+#####################
 
+# General Module settings
+Style Fvwm*	NoTitle, Sticky, WindowListSkip
+Style Fvwm*	BorderWidth 0, CirculateSkipIcon, CirculateSkip
+
+# Specific Pager Styles
+Style FvwmPager StaysOnTop
+Style FvwmPager BorderWidth 0
+
+#####################
+#Program Style Setup#
+#####################
+
+# Insert specific program styles (such as xterm) here.
+
+################
+
+################Mouse Click Behavior################
+
+# Setup Title Bar buttons
+Mouse 0 1	A	Menu MenuFvwmWindowOps Close
+Mouse 0 4	A	Iconify
+
+# Iconify and deiconify things when clicked
+Mouse 1 I	A	FuncFvwmMoveOrIconify
+Mouse 2 I	A	Iconify
+
+# General background clicks
 Mouse 1 R	A	Menu MenuFvwmRoot Nop
 #Add middle mouse button here
 Mouse 3 R	A	WindowList
 
-##################
+################
+
+################Menues################
+
+##############
+#Mouse Menues#
+##############
+
 # right click menu
 DestroyMenu MenuFvwmRoot
 AddToMenu MenuFvwmRoot	"$[gt.Root Menu]"	Title
@@ -100,9 +133,38 @@ AddToMenu MenuFvwmPower		"$[gt.Power]"	Title
 +			"&H. Hibernate"		Nop
 +			"&R. Reboot"		Exec systemctl reboot
 +			"&P. Power Off"		Exec systemctl poweroff
+
+###############
+#Window Menues#
+###############
+
+#Button 1 Menu
+DestroyMenu MenuFvwmWindowOps
+AddToMenu MenuFvwmWindowOps
++			"$[gt.(Un)&Stick]"	Stick
++			"$[gt.&Lower]"		Lower
++			"$[gt.&Raise]"		Raise
++			""			Nop
++ 			"$[gt.&Close]"		Close
++ 			"$[gt.&Destroy]"	Destroy
+
 ################
 
+################Functions################
 
-###############
-#Init Function#
-###############
+# USES:
+#  Click-Titlebar 
+DestroyFunc FuncFvwmMoveOrIconify
+AddToFunc FuncFvwmMoveOrIconify
++ I Raise
++ M Move
++ D Iconify
+
+################
+
+################Init Function################
+
+AddToFunc StartFunction
++ I Module FvwmPager *
+
+################
