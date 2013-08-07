@@ -149,6 +149,7 @@ AddToMenu MenuFvwmRoot	"$[gt.Root Menu]"	Title
 +			""	Nop
 +			"&G. Games"	Popup MenuFvwmGames
 +			"&U. Utilities"	Popup MenuFvwmUtilities
++			"&S. Settings"	Popup MenuFvwmSettings
 +			"&V. Fvwm2"	Popup MenuFvwmControl
 +			"&P. Power"	Popup MenuFvwmPower
 
@@ -162,6 +163,10 @@ DestroyMenu MenuFvwmUtilities
 AddToMenu MenuFvwmUtilities	"$[gt.Utilities]" Title
 +			"&T. Top"	Exec exec xterm -T Top -n Top -e top
 
+DestroyMenu MenuFvwmSettings
+AddToMenu MenuFvwmSettings	"$[gt.Settings]"	Title
++			"&W. Change Wallpaper" \
+	Exec /home/farwind/.scripts/wallpaper.sh
 DestroyMenu MenuFvwmControl
 AddToMenu MenuFvwmControl "$[gt.Fvwm2]"	Title
 +			"&Q. Quit"	Quit
