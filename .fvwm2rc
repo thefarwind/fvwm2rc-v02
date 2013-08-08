@@ -17,6 +17,9 @@ DesktopSize 3x2
 DesktopName 0	Main
 DesktopName 1	Work
 DesktopName 2	Games
+## Note: I cannot seem to get the pager to display the other two
+## desktops when I switch between them. This it the most important
+## task that needs to be completed.
 
 # controls edge scrolling behavior
 EdgeScroll 100 100
@@ -32,8 +35,14 @@ ClickTime 500
 MoveThreshold 3
 
 ###############Color Sets###################
+# Colorset 1 is for use for highlighted frames. Colorset 3 is for use
+# in frames that are not related to highlighted things. Colorset 2 
+# will *hopefully* eventually be for things currently not in focus,
+# but the purple stands out too much. I think I need to make it more 
+# grey.
+
 colorset 1 fg black, bg darkorange
-colorset 2 fg white, bg darkolivegreen
+colorset 2 fg white, bg #330033, hi #400040, sh #170017
 colorset 3 fg white, bg darkslategrey
 ###############
 
@@ -48,7 +57,6 @@ colorset 3 fg white, bg darkslategrey
 
 # General Window Styles
 Style * 	TileCascadePlacement
-#Style *		Colorset 2
 Style * 	HilightColorset 1
 Style * 	MWMFunctions, MWMDecor, HintOverride
 Style *		DecorateTransient, !UsePPosition
@@ -102,6 +110,7 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Sort id
 *FvwmIconMan: FollowFocus true
 #*FvwmIconMan: Colorset 3
+*FvwmIconMan: SelectColorset 1
 *FvwmIconMan: Background darkslategrey
 *FvwmIconMan: ButtonGeometry 80x20
 *FvwmIconMan: ManagerGeometry 2x5
@@ -128,7 +137,7 @@ Mouse 2 I	A	Iconify
 
 # General background clicks
 Mouse 1 R	A	Menu MenuFvwmRoot Nop
-#Add middle mouse button here
+Mouse 2 R	A	GotoDesk 1 0 0 2
 Mouse 3 R	A	WindowList
 
 ################
@@ -142,7 +151,8 @@ Mouse 3 R	A	WindowList
 # right click menu
 DestroyMenu MenuFvwmRoot
 AddToMenu MenuFvwmRoot	"$[gt.Root Menu]"	Title
-+			"&1. XTerm"	Exec exec xterm
++			"&1. XTerm"	Exec exec xterm -fa \
+	"inconsolata:size=10:antialias=true"
 +			""	Nop
 +			"&M. Midori"	Exec exec midori
 +			"&F. Firefox"	Exec exec firefox
