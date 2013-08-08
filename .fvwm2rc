@@ -1,8 +1,8 @@
 ########################################
-# |==] \\    // || /\ || |\    /| /===)#
-# ||    \\  //  ||//\\|| |\\  //| ~ // #
-# |==]   \\//   |//  \\| ||\\//||  //  #
-# ||      \/    |/    \| || \/ || (===]#
+# /-=> |\    /| |\ /\ /| |\    /| /===)#
+# |(    \\  //  ||//\\|| |\\  //| `'// #
+# |,=>   \\//   |//  \\| ||\\//||  //  #
+# ||      \/    |/    \| |/ \/ \| (===>#
 ########################################
 # Author: Bryan E. Barnhart            #
 ########################################
@@ -31,7 +31,7 @@ EwmhBaseStruts 1 -1 1 -81
 
 # Mouse General Behavior
 ColormapFocus FollowsMouse
-ClickTime 500
+ClickTime 350
 MoveThreshold 3
 
 ###############Color Sets###################
@@ -42,7 +42,7 @@ MoveThreshold 3
 # grey.
 
 colorset 1 fg black, bg darkorange
-colorset 2 fg white, bg #330033, hi #400040, sh #170017
+colorset 2 fg white, bg #504050
 colorset 3 fg white, bg darkslategrey
 ###############
 
@@ -83,7 +83,7 @@ MenuStyle * Font xft:inconsolata:Medium:Regular:size=11
 
 # General Module settings
 Style Fvwm*	!Title, Sticky, WindowListSkip
-Style Fvwm*	BorderWidth 2, HandleWidth 0, CirculateSkipIcon, CirculateSkip
+Style Fvwm*	BorderWidth 0, HandleWidth 0, CirculateSkipIcon, CirculateSkip
 
 # Specific Pager Styles
 Style FvwmPager StaysOnTop
@@ -129,6 +129,7 @@ DestroyModuleConfig FvwmPager: *
 
 # Setup Title Bar buttons
 Mouse 0 1	A	Menu MenuFvwmWindowOps Close
+Mouse 0 2	A	FuncFvwmMaximize
 Mouse 0 4	A	Iconify
 
 # Iconify and deiconify things when clicked
@@ -167,7 +168,7 @@ DestroyMenu MenuFvwmGames
 AddToMenu MenuFvwmGames		"$[gt.Games]"	Title
 +			"&S. Steam"		Exec exec steam
 +			"&M. Minecraft" 	Exec minecraft
-+			"&F. Feed The Beast"	Exec feedthebeast
++			"&F. FeedTheBeast"	Exec feedthebeast
 
 DestroyMenu MenuFvwmUtilities
 AddToMenu MenuFvwmUtilities	"$[gt.Utilities]" Title
@@ -216,6 +217,15 @@ AddToFunc FuncFvwmMoveOrIconify
 + M Move
 + D Iconify
 
+# Note: Grabbed from pregenerated function. Linked to commands so that
+# things will maximize. Modified line c in order to make it most 
+# efficient.
+DestroyFunc FuncFvwmMaximize
+AddToFunc FuncFvwmMaximize
++ M Maximize 100 100
++ H Maximize   0 100
++ C Maximize   0  92
++ D Maximize 100  92
 ################
 
 ################Init Function################
