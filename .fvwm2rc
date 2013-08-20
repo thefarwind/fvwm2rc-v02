@@ -173,6 +173,7 @@ AddToMenu MenuFvwmGames		"$[gt.Games]"	Title
 DestroyMenu MenuFvwmUtilities
 AddToMenu MenuFvwmUtilities	"$[gt.Utilities]" Title
 +			"&T. Top"	Exec exec xterm -T Top -n Top -e top
++			"&G. Gimp"	Exec gimp
 
 DestroyMenu MenuFvwmSettings
 AddToMenu MenuFvwmSettings	"$[gt.Settings]"	Title
