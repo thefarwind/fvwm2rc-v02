@@ -224,7 +224,7 @@ AddToFunc FuncFvwmMoveOrIconify
 DestroyFunc FuncFvwmMaximize
 AddToFunc FuncFvwmMaximize
 + M Maximize 100 100
-+ H Maximize   0 100
++ H Maximize  50  92
 + C Maximize   0  92
 + D Maximize 100  92
 ################
