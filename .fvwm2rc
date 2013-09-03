@@ -152,8 +152,8 @@ Mouse 3 R	A	WindowList
 # right click menu
 DestroyMenu MenuFvwmRoot
 AddToMenu MenuFvwmRoot	"$[gt.Root Menu]"	Title
-+			"&1. XTerm"	Exec exec xterm -fa \
-	"inconsolata:size=10:antialias=true"
++			"&1. XTerm"	Exec exec xterm\
+	-fa "inconsolata:size=10:antialias=true"
 +			""	Nop
 +			"&M. Midori"	Exec exec midori
 +			"&F. Firefox"	Exec exec firefox
