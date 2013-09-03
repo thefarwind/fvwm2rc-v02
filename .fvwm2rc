@@ -167,13 +167,20 @@ AddToMenu MenuFvwmRoot	"$[gt.Root Menu]"	Title
 DestroyMenu MenuFvwmGames
 AddToMenu MenuFvwmGames		"$[gt.Games]"	Title
 +			"&S. Steam"		Exec exec steam
-+			"&M. Minecraft" 	Exec minecraft
-+			"&F. FeedTheBeast"	Exec feedthebeast
++			"&M. Minecraft" 	Exec exec minecraft
++			"&F. FeedTheBeast"	Exec exec feedthebeast
 
 DestroyMenu MenuFvwmUtilities
 AddToMenu MenuFvwmUtilities	"$[gt.Utilities]" Title
-+			"&T. Top"	Exec exec xterm -T Top -n Top -e top
-+			"&G. Gimp"	Exec gimp
++			"&T. Top"	Exec exec xterm\
+	-fa "inconsolata:size=10:antialias=true"\
+	-T Top -n Top -e top
++			"&V. Vifm"	Exec exec xterm\
+	-fa "inconsolata:size=10:antialias=true"\
+	-T Vifm -n Vifm -e vifm
++			""		Nop
++			"&G. Gimp"	Exec exec gimp
++			"&L. LibreOffice" Exec exec libreoffice
 
 DestroyMenu MenuFvwmSettings
 AddToMenu MenuFvwmSettings	"$[gt.Settings]"	Title
@@ -188,11 +195,11 @@ DestroyMenu MenuFvwmPower
 AddToMenu MenuFvwmPower		"$[gt.Power]"	Title
 +			"&L. Logout"		Quit
 +			""			Nop
-+			"&S. Suspend"		Exec systemctl suspend
++			"&S. Suspend"		Exec exec systemctl suspend
 +			"&H. Hibernate"		Nop
 +			""			Nop
-+			"&R. Reboot"		Exec systemctl reboot
-+			"&P. Shutdown"		Exec systemctl poweroff
++			"&R. Reboot"		Exec exec systemctl reboot
++			"&P. Shutdown"		Exec exec systemctl poweroff
 
 ###############
 #Window Menues#
