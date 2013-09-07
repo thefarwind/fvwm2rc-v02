@@ -175,11 +175,13 @@ AddToMenu MenuFvwmUtilities	"$[gt.Utilities]" Title
 +			"&T. Top"	Exec exec xterm\
 	-fa "inconsolata:size=10:antialias=true"\
 	-T Top -n Top -e top
++			""		Nop
 +			"&V. Vifm"	Exec exec xterm\
 	-fa "inconsolata:size=10:antialias=true"\
 	-T Vifm -n Vifm -e vifm
 +			""		Nop
 +			"&G. Gimp"	Exec exec gimp
++			"&Q. QtCreator" Exec exec qtcreator
 +			"&L. LibreOffice" Exec exec libreoffice
 
 DestroyMenu MenuFvwmSettings
