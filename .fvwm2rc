@@ -21,6 +21,8 @@ DesktopName 2	Games
 ## desktops when I switch between them. This it the most important
 ## task that needs to be completed.
 
+# Randomize desktop
+
 # controls edge scrolling behavior
 EdgeScroll 100 100
 EdgeResistance 150 150
@@ -69,6 +71,7 @@ Style * 	IconBox 1 -80 -171 -1
 Style *		Font xft:FreeSerif:Medium:Regular:size=10
 Style *		IconFont xft:FreeSerif:Medium:Regular:size=10
 
+Exec /home/farwind/.scripts/wallpaper.sh
 #############
 #Menu Styles#
 #############
@@ -188,6 +191,9 @@ DestroyMenu MenuFvwmSettings
 AddToMenu MenuFvwmSettings	"$[gt.Settings]"	Title
 +			"&W. Change Wallpaper" \
 	Exec /home/farwind/.scripts/wallpaper.sh
++			"&A. Alsamixer"	Exec exec xterm\
+	-fa "inconsolata:size=10:antialias=true"\
+	-T Alsamixer -n Alsamixer -e alsamixer
 DestroyMenu MenuFvwmControl
 AddToMenu MenuFvwmControl "$[gt.Fvwm2]"	Title
 +			"&Q. Quit"	Quit
