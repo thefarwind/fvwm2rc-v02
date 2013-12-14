@@ -178,7 +178,6 @@ AddToMenu MenuFvwmUtilities	"$[gt.Utilities]" Title
 +			"&T. Top"	Exec exec xterm\
 	-fa "inconsolata:size=10:antialias=true"\
 	-T Top -n Top -e top
-+			""		Nop
 +			"&V. Vifm"	Exec exec xterm\
 	-fa "inconsolata:size=10:antialias=true"\
 	-T Vifm -n Vifm -e vifm
@@ -189,7 +188,7 @@ AddToMenu MenuFvwmUtilities	"$[gt.Utilities]" Title
 
 DestroyMenu MenuFvwmSettings
 AddToMenu MenuFvwmSettings	"$[gt.Settings]"	Title
-+			"&W. Change Wallpaper" \
++			"&W. Wallpaper" \
 	Exec /home/farwind/.scripts/wallpaper.sh
 +			"&A. Alsamixer"	Exec exec xterm\
 	-fa "inconsolata:size=10:antialias=true"\
