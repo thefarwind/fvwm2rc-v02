@@ -5,6 +5,6 @@ To use, copy over ~/.fvwm/.fvwm2rc
 
 the wallpaper.sh script is the script I use to mess with my wallpaper.
 I have it reside in a folder I created called ~/.scripts/ where I place
-all my custom scripts. I call the script at startup in my .xinitrc and 
-have the 'change wallpaper' button refer to it.
+all my custom scripts. 
 
+This script is called by the .fvwm2rc script, assuming it exists.
