@@ -3,6 +3,8 @@ my home desktop.
 
 To use, copy over ~/.fvwm/.fvwm2rc
 
+Then, if fvwm2 is open, refresh fvwm2.
+
 the wallpaper.sh script is the script I use to mess with my wallpaper.
 I have it reside in a folder I created called ~/.scripts/ where I place
 all my custom scripts. 
