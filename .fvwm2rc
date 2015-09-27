@@ -17,9 +17,6 @@ DesktopSize 3x2
 DesktopName 0	Main
 DesktopName 1	Work
 DesktopName 2	Games
-## Note: I cannot seem to get the pager to display the other two
-## desktops when I switch between them. This it the most important
-## task that needs to be completed.
 
 # Randomize desktop
 
@@ -38,19 +35,53 @@ MoveThreshold 3
 
 ###############Color Sets###################
 # Colorset 1 is for use for highlighted frames. Colorset 3 is for use
-# in frames that are not related to highlighted things. Colorset 2 
-# will *hopefully* eventually be for things currently not in focus,
-# but the purple stands out too much. I think I need to make it more 
-# grey.
+# in frames that are not related to highlighted things. Colorset 2
+# is used for things currently not in focus,
+#
+# Colorset 4 is a slightly lighter orange to be used for constrast
+# against Colorset 1. Colorset 5 is the equivalent for Colorset 2.
+#
+# TODO: Revamp colorset 3 to mesh better with Colorset 1 and Colorset 2
 
-colorset 1 fg black, bg darkorange
-colorset 2 fg white, bg #504050
-colorset 3 fg white, bg darkslategrey
+# Active Window Borders
+colorset 1\
+	Foreground black,\
+	Background darkorange
+
+# Active Highlight Window Borders
+colorset 4\
+	Foreground black,\
+	background orange
+
+# Inactive Window Borders
+colorset 2\
+	Foreground white,\
+	Background #504050
+#
+# Inactive Highlight Window Borders
+colorset 5\
+	Foreground white,\
+	Background #604060
+
+# Other
+colorset 3\
+	Foreground white,\
+	Background DarkSlateGrey
+
 ###############
 
+OpaqueMoveSize	unlimited
 
+SnapAttraction 4 All
+BorderStyle 	Active		Colorset 1 -- NoInset Flat
+BorderStyle 	Inactive 	Colorset 2 -- NoInset Flat
 
+TitleStyle 	Active  	Colorset 4 -- Flat
+TitleStyle 	ActiveDown  	Colorset 1 -- Flat
+TitleStyle 	Inactive 	Colorset 5 -- Flat
 
+ButtonStyle Reset
+ButtonStyle All 		-- UseTitleStyle Flat
 ################Styles Setup################
 
 ################
@@ -59,10 +90,11 @@ colorset 3 fg white, bg darkslategrey
 
 # General Window Styles
 Style * 	TileCascadePlacement
-Style * 	HilightColorset 1
 Style * 	MWMFunctions, MWMDecor, HintOverride
 Style *		DecorateTransient, !UsePPosition
 Style *		FocusFollowsMouse
+Style *		NoIcon
+Style *		ResizeOpaque
 
 #Setup IconBox area
 Style * 	IconBox 1 -80 -171 -1
@@ -85,11 +117,17 @@ MenuStyle * Font xft:inconsolata:Medium:Regular:size=11
 #####################
 
 # General Module settings
-Style Fvwm*	!Title, Sticky, WindowListSkip
-Style Fvwm*	BorderWidth 0, HandleWidth 0, CirculateSkipIcon, CirculateSkip
+Style Fvwm*\
+	!Title,\
+	Sticky,\
+	WindowListSkip,\
+	BorderWidth 0,\
+	HandleWidth 0,\
+	CirculateSkipIcon,\
+	CirculateSkip
 
 # Specific Pager Styles
-Style FvwmPager StaysOnTop
+Style MyButtons StaysPut
 
 
 DestroyModuleConfig MyButtons: *
@@ -99,27 +137,41 @@ DestroyModuleConfig MyButtons: *
 *MyButtons: Rows 1
 *MyButtons: Columns 2
 *MyButtons: (1x1, Frame 0, Swallow "FvwmIconMan" "Module FvwmIconMan")
-*MyButtons: (1x1, Frame 0, Swallow "FvwmPager" "Module FvwmPager")
+*MyButtons: (1x1, Frame 0, Swallow "FvwmPager" "Module FvwmPager *")
 
 DestroyModuleConfig FvwmIconMan: *
-*FvwmIconMan: NumManagers 1
-*FvwmIconMan: Resolution  page
-*FvwmIconMan: Format 	  "%t"
-*FvwmIconMan: Action      Mouse	1 A sendcommand Focus, sendcommand "Iconify"
+#NOTE: Do not use colorset -- it overrides everthing
 #Note: I can't seem to get it to focus on the element after iconifying it
-*FvwmIconMan: Action	  Select sendcommand Focus
-*FvwmIconMan: SelectButton down
-*FvwmIconMan: FocusAndSelectButton down
-*FvwmIconMan: Sort id
-*FvwmIconMan: FollowFocus true
+#*FvwmIconMan: Action	  Select sendcommand Focus
+#*FvwmIconMan: Action      Mouse	1 A sendcommand Focus, sendcommand "Iconify"
 #*FvwmIconMan: Colorset 3
-*FvwmIconMan: SelectColorset 1
-*FvwmIconMan: Background darkslategrey
-*FvwmIconMan: ButtonGeometry 80x20
+#*FvwmIconMan: ButtonGeometry 80x20
+*FvwmIconMan: FollowFocus true
+#*FvwmIconMan: Format 	  "%t"
 *FvwmIconMan: ManagerGeometry 2x5
+#*FvwmIconMan: Resolution  page
+#*FvwmIconMan: SelectColorset 1
+#*FvwmIconMan: Sort id
+
+*FvwmIconMan: Background DarkSlateGrey
+*FvwmIconMan: SelectButton 		flat	black	Orange
+*FvwmIconMan: FocusAndSelectButton	flat	black	DarkOrange
+*FvwmIconMan: FocusButton		flat	black	Orange
+*FvwmIconMan: PlainButton		flat	white	#605060
+*FvwmIconMan: IconButton		flat	white	#605060
+#
+# XXX: The following lines are commented out because they are broken
+# in the current version of FVWM2
+#*FvwmIconMan: NumManagers 1
+#*FvwmIconMan: PlainColorset 6
+#*FvwmIconMan: FocusColorset 4
+#*FvwmIconMan: FocusAndSelect 6
+#*FvwmIconMan: SelectColorset 6
+#*FvwmIconMan: IconColorset 6
 
 DestroyModuleConfig FvwmPager: *
-*FvwmPager: Geometry 170x80-1-1
+*FvwmPager: WindowColorsets 2 1
+#
 #####################
 #Program Style Setup#
 #####################
@@ -135,6 +187,13 @@ Mouse 0 1	A	Menu MenuFvwmWindowOps Close
 Mouse 0 2	A	FuncFvwmMaximize
 Mouse 0 4	A	Iconify
 
+Mouse 1 TS	A	FuncFvwmRaiseLowerX Move
+Mouse 1 F	A	FuncFvwmRaiseLowerX Move
+
+Mouse 3 TS	A	FuncFvwmLowerRaiseX Move
+Mouse 3 F	A	FuncFvwmLowerRaiseX Move
+
+
 # Iconify and deiconify things when clicked
 Mouse 1 I	A	FuncFvwmMoveOrIconify
 Mouse 2 I	A	Iconify
@@ -145,7 +204,8 @@ Mouse 2 R	A	GotoDesk 1 0 0 2
 Mouse 3 R	A	WindowList
 
 ################
-
+Key 	Menu 	A A	Menu MenuFvwmRoot Nop
+Key	Tab	A M	FuncCycleWindowList
 ###############Keyboard Behavior################
 
 ################Menues################
@@ -229,7 +289,7 @@ AddToMenu MenuFvwmWindowOps
 ################Functions################
 
 # USES:
-#  Click-Titlebar 
+#  Click-Titlebar
 DestroyFunc FuncFvwmMoveOrIconify
 AddToFunc FuncFvwmMoveOrIconify
 + I Raise
@@ -237,7 +297,7 @@ AddToFunc FuncFvwmMoveOrIconify
 + D Iconify
 
 # Note: Grabbed from pregenerated function. Linked to commands so that
-# things will maximize. Modified line c in order to make it most 
+# things will maximize. Modified line c in order to make it most
 # efficient.
 DestroyFunc FuncFvwmMaximize
 AddToFunc FuncFvwmMaximize
@@ -245,6 +305,21 @@ AddToFunc FuncFvwmMaximize
 + H Maximize  50  92
 + C Maximize   0  92
 + D Maximize 100  92
+
+DestroyFunc FuncFvwmRaiseLowerX
+AddToFunc FuncFvwmRaiseLowerX I Raise
++ M $0
++ D Lower
+
+DestroyFunc FuncFvwmLowerRaiseX
+AddToFunc FuncFvwmLowerRaiseX I Lower
++ M $0
++ D Raise
+
+DestroyFunc FuncCycleWindowList
+AddToFunc FuncCycleWindowList
++ I Next (CurrentDesk) WarpToWindow 1p 1p
+
 ################
 
 ################Init Function################
