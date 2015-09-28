@@ -61,7 +61,9 @@ colorset 2\
 # Inactive Highlight Window Borders
 colorset 5\
 	Foreground white,\
-	Background #604060
+	Background #604060,\
+	Hi #504050,\
+	Sh #504050
 
 # Other
 colorset 3\
@@ -108,8 +110,12 @@ Exec /home/farwind/.scripts/wallpaper.sh
 #Menu Styles#
 #############
 
-MenuStyle * fvwm
-MenuStyle * MenuColorset 3
+MenuStyle * Fvwm
+MenuStyle * MenuColorset 5
+MenuStyle * BorderWidth 5
+MenuStyle * Hilight3DOff 0
+MenuStyle * ActiveColorset 4
+MenuStyle * ActiveFore, HilightBack
 MenuStyle * Font xft:inconsolata:Medium:Regular:size=11
 
 #####################
@@ -117,17 +123,28 @@ MenuStyle * Font xft:inconsolata:Medium:Regular:size=11
 #####################
 
 # General Module settings
+
+#Style Fvwm*\
+#	!Title,\
+#	Sticky,\
+#	WindowListSkip,\
+#	BorderWidth 0,\
+#	HandleWidth 0,\
+#	CirculateSkipIcon,\
+#	CirculateSkip
+
 Style Fvwm*\
+	BorderWidth 5,\
 	!Title,\
 	Sticky,\
 	WindowListSkip,\
-	BorderWidth 0,\
-	HandleWidth 0,\
+	!Handles,\
+	FixedPosition,\
 	CirculateSkipIcon,\
-	CirculateSkip
-
+	CirculateSkip,\
+	NeverFocus
 # Specific Pager Styles
-Style MyButtons StaysPut
+# Style MyButtons StaysPut
 
 
 DestroyModuleConfig MyButtons: *
