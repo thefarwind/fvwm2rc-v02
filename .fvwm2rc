@@ -314,6 +314,9 @@ AddToMenu MenuFvwmWindowOps
 +			"$[gt.&Lower]"		Lower
 +			"$[gt.&Raise]"		Raise
 +			""			Nop
++			"$[gt.&Next]"		MoveToDesk 1
++			"$[gt.&Prev]"		MoveToDesk -1
++			""			Nop
 + 			"$[gt.&Close]"		Close
 + 			"$[gt.&Destroy]"	Destroy
 
