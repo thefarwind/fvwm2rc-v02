@@ -102,8 +102,8 @@ Style *		ResizeOpaque
 Style * 	IconBox 1 -80 -171 -1
 
 #Setup general fonts
-Style *		Font xft:FreeSerif:Medium:Regular:size=10
-Style *		IconFont xft:FreeSerif:Medium:Regular:size=10
+Style *		Font xft:inconsolata:Medium:Regular:size=10
+Style *		IconFont xft:inconsolata:Medium:Regular:size=10
 
 Exec /home/farwind/.scripts/wallpaper.sh
 #############
@@ -150,14 +150,24 @@ Style Fvwm*\
 
 
 DestroyModuleConfig MyButtons: *
-*MyButtons: Geometry 340x80-1-1
+*MyButtons: Geometry 340x72-1-1
 *MyButtons: Colorset 3
 *MyButtons: Frame 0
-*MyButtons: Rows 1
+*MyButtons: Font xft:inconsolata:Medium:Regular:size=11
+*MyButtons: Rows 5
 *MyButtons: Columns 2
-*MyButtons: (1x1, Frame 0, Swallow "FvwmIconMan" "Module FvwmIconMan")
-*MyButtons: (1x1, Frame 0, Swallow "FvwmPager" "Module FvwmPager *")
-
+*MyButtons: (1x4, Frame 0, Swallow "FvwmIconMan" "Module FvwmIconMan")
+*MyButtons: (1x5, Frame 0, Swallow "FvwmPager" "Module FvwmPager *")
+*MyButtons: (1x1, Colorset 5, Padding 16 0, Swallow XClock\
+	'Exec xclock\
+		-strftime "%F %T"\
+		-padding 0\
+		-update 1\
+		-d\
+		-face inconsolata:size=10\
+		-fg white\
+		-bg rgb:60/40/60\
+		&')
 DestroyModuleConfig FvwmIconMan: *
 #NOTE: Do not use colorset -- it overrides everthing
 #Note: I can't seem to get it to focus on the element after iconifying it
@@ -165,19 +175,22 @@ DestroyModuleConfig FvwmIconMan: *
 #*FvwmIconMan: Action      Mouse	1 A sendcommand Focus, sendcommand "Iconify"
 #*FvwmIconMan: Colorset 3
 #*FvwmIconMan: ButtonGeometry 80x20
+
+*FvwmIconMan: Font xft:inconsolata:Medium:Regular:size=10
+*FvwmIconMan: Title ""
 *FvwmIconMan: FollowFocus true
 #*FvwmIconMan: Format 	  "%t"
-*FvwmIconMan: ManagerGeometry 2x5
+*FvwmIconMan: ManagerGeometry 2x1
 #*FvwmIconMan: Resolution  page
 #*FvwmIconMan: SelectColorset 1
 #*FvwmIconMan: Sort id
 
-*FvwmIconMan: Background DarkSlateGrey
+*FvwmIconMan: Background 	DarkSlateGrey
 *FvwmIconMan: SelectButton 		flat	black	Orange
 *FvwmIconMan: FocusAndSelectButton	flat	black	DarkOrange
 *FvwmIconMan: FocusButton		flat	black	Orange
-*FvwmIconMan: PlainButton		flat	white	#605060
-*FvwmIconMan: IconButton		flat	white	#605060
+*FvwmIconMan: PlainButton		flat	white	#604060
+*FvwmIconMan: IconButton		flat	white	#604060
 #
 # XXX: The following lines are commented out because they are broken
 # in the current version of FVWM2
@@ -189,6 +202,7 @@ DestroyModuleConfig FvwmIconMan: *
 #*FvwmIconMan: IconColorset 6
 
 DestroyModuleConfig FvwmPager: *
+*FvwmPager: Font xft:inconsolata:Medium:Regular:size=10
 *FvwmPager: WindowColorsets 2 1
 #
 #####################
