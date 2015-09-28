@@ -116,6 +116,7 @@ MenuStyle * BorderWidth 5
 MenuStyle * Hilight3DOff 0
 MenuStyle * ActiveColorset 4
 MenuStyle * ActiveFore, HilightBack
+MenuStyle * TrianglesSolid
 MenuStyle * Font xft:inconsolata:Medium:Regular:size=11
 
 #####################
@@ -142,7 +143,8 @@ Style Fvwm*\
 	FixedPosition,\
 	CirculateSkipIcon,\
 	CirculateSkip,\
-	NeverFocus
+	NeverFocus,\
+	StartsLowered
 # Specific Pager Styles
 # Style MyButtons StaysPut
 
