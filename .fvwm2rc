@@ -172,7 +172,8 @@ DestroyModuleConfig FvwmIconMan: *
 #NOTE: Do not use colorset -- it overrides everthing
 #Note: I can't seem to get it to focus on the element after iconifying it
 #*FvwmIconMan: Action	  Select sendcommand Focus
-#*FvwmIconMan: Action      Mouse	1 A sendcommand Focus, sendcommand "Iconify"
+*FvwmIconMan:	Action	Mouse 3 A	sendcommand "WarpToWindow 2p 2p"
+*FvwmIconMan:	Action	Mouse 1 A	sendcommand "Iconify"
 #*FvwmIconMan: Colorset 3
 #*FvwmIconMan: ButtonGeometry 80x20
 
